@@ -22,6 +22,15 @@ RecordStore.prototype = {
         return record.artist === artistName;
       })
     },
+
+  listInventory: function(){
+    var newInventory = _.sortBy(this.inventory, ['artist']);
+    var newArray = newInventory.map(function(item){
+      return "Artist: " + item['artist'] + ", Title: " + item['title'] + ", Price: " + item['price'];
+       });
+    var result = newArray.join('\n');
+      return result;
+     },
   }
 
 
