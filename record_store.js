@@ -1,3 +1,5 @@
+var _ = require('lodash');
+
 var RecordStore = function( params ) {
   this.records = [];
   this.name = params.name;
@@ -13,7 +15,14 @@ var RecordStore = function( params ) {
 RecordStore.prototype = {
   addRecord: function( record ) {
     this.records.push( record );
+  },
+
+  findRecordByArtist: function( artistName ) {
+      return _.find(this.records, function(record){
+        return record.artist === artistName;
+      })
+    },
   }
-}
+
 
 module.exports = RecordStore;
